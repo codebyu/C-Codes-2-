@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-
-#include<stdio.h>
-int main(){
-printf("Demo\n");
-return 0;
-}
-
-=======
 #include<stdio.h>
 int main()
 {
@@ -47,4 +38,3 @@ int main()
     return 0;
     
 }
->>>>>>> 831fffb (C)

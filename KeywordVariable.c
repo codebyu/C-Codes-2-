@@ -1,6 +1,6 @@
 #include<stdio.h>
 int main(){
-    int  = 5;
+    int unsigned = 5;
     printf("Your unsigned is %d",unsigned);
     return 0;
 }

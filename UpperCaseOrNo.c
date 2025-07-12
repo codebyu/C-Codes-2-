@@ -12,4 +12,6 @@ int main(){
         else {
             printf("Not a english character\n");
         }
+        return 0;
+    
     }

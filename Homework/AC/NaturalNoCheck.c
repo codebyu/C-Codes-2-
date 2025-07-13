@@ -10,7 +10,7 @@ int main(){
     else{
         printf("Not a Natural No.\n");
     }
-    printf("int min: %d, int max: %d\n", INT_MIN, INT_MAX);
+    printf("int min: %ld, int max: %ld\n", LONG_MIN, LONG_MAX);
     return 0;
     
 

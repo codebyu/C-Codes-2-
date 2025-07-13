@@ -12,8 +12,6 @@ int main(){
     }
     printf("int min: %ld, int max: %ld\n", LONG_MIN, LONG_MAX);
     return 0;
-    return 2;
-    //hahahahahah
     
 
 }

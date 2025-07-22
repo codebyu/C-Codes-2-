@@ -15,5 +15,6 @@ int main(){
        printf("%d is largest \n",d);
     else if(a==b&&b==c&&c==d){
         printf("All no. are equal \n");
+    else if
     }
 }

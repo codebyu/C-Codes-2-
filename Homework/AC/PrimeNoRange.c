@@ -11,15 +11,16 @@ int main(){
                c=0;
                break;
             }
-
-            
+           
         }
+        
 
              
-        
+        if(i!=1&&i!=0)
             if(c==1){
                 printf("Prime No. is %d\n",i);
-                
+
+    
             }
         }
     }

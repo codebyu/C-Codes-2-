@@ -33,6 +33,7 @@ int main(){
                  area = areaR(l,b);
                 printf("Calculated Area :%f\n",area);
                 break;
+         default : printf("Invalid Action\n");
     }
     printf("---------ThankYou---------");
     return 0;

@@ -1,0 +1,1 @@
+1. A logic learnt during making prime no. program that there can not be any no.greater than n/2 that can completely divide n except n ; as n/2 divides it by 2 completely and n divides it by 1 completely bw them no integer exits hence no number exist bw them which completely divide n;

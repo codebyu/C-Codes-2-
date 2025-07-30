@@ -1,12 +1,11 @@
 #include<stdio.h>
-int n;
-
-int main(n){
+#include<math.h>
+int main(){
+    printf("Enter the no. to find it's Square\n");
     int n;
-    printf("Enter the no. to find square\n");
     scanf("%d",&n);
-    int c= main(2);
-    printf("%d",c);
-    return n*n;
-
+    double c  = pow(n,2); //double se int me convert hone par thodi problem aati hai implicitely 
+    int d = c;             
+    printf("Squaring result : %d",d);
+    return 0;
 }

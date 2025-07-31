@@ -1,0 +1,1 @@
+pow function double data type me values return krta haii agar hame int me chahiye to pehele double me value ko store karo and then int me explicit conversion karo got it..

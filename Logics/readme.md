@@ -1,1 +1,3 @@
-1. A logic learnt during making prime no. program that there can not be any no.greater than n/2 that can completely divide n except n ; as n/2 divides it by 2 completely and n divides it by 1 completely bw them no integer exits hence no number exist bw them which completely divide n;
+1. A logic learnt during making prime no. program that there can not be any no.greater than n/2 that can completely divide n except n ; as n/2 divides it by 2 completely and n divides it by 1 completely bw them no integer exits hence no number exist bw them which completely divide n; (also n/2 ko 2 prime no. aaye tab bhi shi se program chle isliye bhi kiya tha ) "Learn to Build the Logic with Focus"
+2. When we divide any no. by 100 we get remainder from 0 to 99 in the same way when we get the divide any no by 10 we get remainder from 0 to 9 and if want to get from 1 to 10 or 1 to 100 then simply add one .
+armstrong, primerange,nGG,count digits

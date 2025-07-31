@@ -1,6 +1,6 @@
 #include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
+#include<stdlib.h> //srand and rand ke liye
+#include<time.h>   //time(0) ke liye yha par 
 int main(){
     int en,attm=0;
     srand(time(0));

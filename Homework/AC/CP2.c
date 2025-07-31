@@ -13,9 +13,7 @@ int main(){
         }
         
     }
-    if(n==2){
-
-    }
+    
         if(c>2){
             printf("NOt prime");
         }

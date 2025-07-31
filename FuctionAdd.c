@@ -1,6 +1,6 @@
 #include<stdio.h>
 int addition(int a , int b){ // a and b are parameters 
-    return c;
+    return a + b;
 }
 int main(){
     int x,y;

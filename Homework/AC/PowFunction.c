@@ -2,10 +2,10 @@
 int pow(int a,int b){
     int ans;
     for(int i=1;i<=b;i++){
-        ans = a*a;
+        a = a*a;
         
     }
-    return ans;
+    return a;
 }
 
 int main(){

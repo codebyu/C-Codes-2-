@@ -17,6 +17,6 @@ int main(){
     printf("What power of %d you want to find \n",a);
     int b;
     scanf("%d",&b);
-    printf("%d to the power %d is %d",a,b,pow(a,b));
+    printf("%d to the power %d is %d\n",a,b,pow(a,b));
     return 0;
 }

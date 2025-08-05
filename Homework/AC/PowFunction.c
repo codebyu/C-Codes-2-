@@ -1,11 +1,13 @@
 #include<stdio.h>
 int pow(int a,int b){
-    int ans;
+    int ans=1;
     for(int i=1;i<=b;i++){
-        a = a*a;
+        ans = ans *a;
+        
+
         
     }
-    return a;
+    return ans;
 }
 
 int main(){

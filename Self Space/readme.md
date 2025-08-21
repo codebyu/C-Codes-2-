@@ -1,1 +1,2 @@
 pow function double data type me values return krta haii agar hame int me chahiye to pehele double me value ko store karo and then int me explicit conversion karo got it..
+agar int c = 8.2/4.9 to result 1.67 se decimals truncate kr dega or result 1 de dega lekin hum agar %d use krte hai or sochte hai ki float aa rha hai lekin %d laga do to decimals truncate ho jayenge to esa nhi hota hai esa krne ke liye cast krna pdta hai float ko integer me..

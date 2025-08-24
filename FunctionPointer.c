@@ -1,9 +1,9 @@
 #include<stdio.h>
 
-int spa(int a,int b,int *s,int *p,int *av){
+int spa(int a,int b,int *s,int *p,float *av){
      *s= a+b;
      *p= a*b;
-     *av=(a+b)/2;
+     *av=(a+b)/2.0;
 }
 //call by reference will change the values and return 3 values from the function isn't it amazing??????
 int main(){
@@ -11,8 +11,8 @@ int main(){
     int a; scanf("%d",&a);
     printf("Enter the second no.\n");
     int b; scanf("%d",&b);
-   int sum=0; int product = 1;int avg=0;
+   int sum ,product; float avg;
    spa(a,b,&sum,&product,&avg);
-    printf("Sum : %d\nProduct :%d\nAverage :%d\n",sum,product,avg);
+    printf("Sum : %d\nProduct :%d\nAverage :%f\n",sum,product,avg);
     return 0;
 }

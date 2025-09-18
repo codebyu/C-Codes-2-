@@ -3,3 +3,4 @@
 Yes, it is true that when dividing any integer \(a\) by a positive integer \(b\), the remainder \(r\) will be between \(\text{0}\) and \(b-\text{1}\) inclusive, i.e., \(\boxed{\text{0}\le r\le b-\text{1}}\).
 armstrong, primerange,nGG,count digits,recursion concept notes , fibonaccii series
 3. C can also convert int to float like 22 to 22.0 
+4. Trick - agar variable ,pointer ki value change kiye bina usse scan ya print krana ho to jo expression likhna ho scanf or printf me hi likh do to vo bus ushi time ke liye change hoga in loops like example

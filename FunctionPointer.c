@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int spa(int a,int b,int *s,int *p,float *av){
+int spa(int a,int b,int s[],int *p,float *av){
      *s= a+b;
      *p= a*b;
      *av=(a+b)/2.0;

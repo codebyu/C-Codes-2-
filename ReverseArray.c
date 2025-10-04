@@ -5,7 +5,7 @@ int main(){
      printf("size : %d\n",size);
     // 4-0 3-1 2-2 0
     int temp;
-    for(int i=0;i<((size+1)/2);i++){
+    for(int i=0;i<=((size+1)/2);i++){
 
        temp = arr[size-i];
        arr[size-i]=arr[i];

@@ -1,5 +1,5 @@
 #include<stdio.h>
-int table(int arr[][10],int num1, int num2){
+int table(int arr[][],int num1, int num2){
     for(int i=0;i<=9;i++){
          arr[0][i]= num1*(i+1);
          arr[1][i]=num2*(i+1);

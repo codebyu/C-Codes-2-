@@ -58,7 +58,8 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "stdio.h": "c",
-    "POINTERCLEARITY.C": "cpp"
+    "POINTERCLEARITY.C": "cpp",
+    "iostream": "cpp"
   },
   "cSpell.words": [
     

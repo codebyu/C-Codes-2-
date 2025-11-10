@@ -59,7 +59,8 @@
   "files.associations": {
     "stdio.h": "c",
     "POINTERCLEARITY.C": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "string.h": "c"
   },
   "cSpell.words": [
     

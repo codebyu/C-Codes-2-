@@ -60,7 +60,8 @@
     "stdio.h": "c",
     "POINTERCLEARITY.C": "cpp",
     "iostream": "cpp",
-    "string.h": "c"
+    "string.h": "c",
+    "sstream": "c"
   },
   "cSpell.words": [
     

@@ -14,7 +14,6 @@ int main(){
     if(count>0&&str[count-1]=='\n'){
         str[count-1]='\0';
         count--;
-        
     }
     
     char finChar=0;

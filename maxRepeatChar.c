@@ -11,24 +11,36 @@ int main(){
     while(str[j]!='\0'){
         count ++; j++;
     }
-    char finChar;
+    if(count>0&&str[count-1]=='\n'){
+        str[count-1]='\0';
+        count--;
+        
+    }
+    
+    char finChar=0;
     for(int i=0;i<count;i++){
         for(int k=0;k<count;k++){
             if(str[i]==str[k]){
-              repeat[i]++;
-              if(repeat[i]>repeat[i-1]){
-                finChar=str[i];
-              }
+             repeat[i]++;
             }
         }
     }
-    int final=repeat[0]; char done;
+    int final= 0; char done;
     for(int c=0;c<count;c++){
-        if(repeat[c+1]>repeat[c]){
-            final = repeat[c+1];
+        if(repeat[c]>final){
+            final = repeat[c];
+            finChar=str[c];
             
         }
         
     }
-    printf("Max repeat is %c and %d times ",finChar,final);
+    if(final>1){
+        if(finChar==' '){
+            printf("Max repeat is space and %d times",final);
+        }
+        else
+        printf("Max repeat is %c and %d times ",finChar,final);
+
+    }
+    else printf("No Max repeat found !!");
 }

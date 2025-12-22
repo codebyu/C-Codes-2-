@@ -7,7 +7,7 @@ int main(){
         repeat[z]=0;
     }
     fgets(str,100,stdin);
-    int j=0;int count =0;
+    int j=0;int count =0;    
     while(str[j]!='\0'){
         count ++; j++;
     }
@@ -20,11 +20,11 @@ int main(){
     for(int i=0;i<count;i++){
         for(int k=0;k<count;k++){
             if(str[i]==str[k]){
-             repeat[i]++;
+             repeat[i]++; 
             }
         }
     }
-    int final= 0; char done;
+    int final= 0; 
     for(int c=0;c<count;c++){
         if(repeat[c]>final){
             final = repeat[c];

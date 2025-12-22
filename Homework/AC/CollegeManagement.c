@@ -177,15 +177,25 @@ int main(){
                 fgets(checkADM,100,stdin);
                 while(1){
                 if(strcmp(true,checkADM)==0){
+                    printf("Press 0 To Go Back and any other key to Move Forward\n");
+                    int exit1; scanf("%d",&exit1);
+                    if(exit1==0) break;
+                    else
                 while(1){
                    printf("Welcome to Admin Portal. Choose from options below : \n");
                    printf("1.See Profile Data\n2.Add Admin Details\n3.Add Student Details\n4.Add Teacher Details\nTo Exit Enter 0\n");
                    int exiter; int ad;
-                   scanf("%d",&ad);
-                   if(ad ==0) break;
+                   scanf("%d",&ad); char dumpp; scanf("%c",&dumpp);
+                   if(ad ==0) break; 
                    switch(ad){
-                        case 1: printf("Admin Name : %s\n",adm[sIndex].name);
-                                printf("Admin ID Number : %d\n",adm[sIndex].id);
+                        case 1: for(int i=0;i<10;i++){
+                                 printf("Admin Name : %s\n",adm[i].name);
+                                printf("Admin ID Number : %d\n",adm[i].id);
+                                 printf("To Stop Enter 0\nTo continue adding admins Enter 1\n");
+                            int sc; scanf("%d",&sc);
+                            if(sc==0) break;
+                            else if(sc==1) continue;
+                        }
                                 break;
                         case 2: for(int i=0;i<10;i++){
                             printf("Enter Admin Name : ");

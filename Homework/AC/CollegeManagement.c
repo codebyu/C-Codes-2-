@@ -11,7 +11,7 @@ struct student{
 };
 struct teacher{
     char name[100];
-    int id;
+    char id[50];
     int experience;
     int salary;
 };
@@ -30,7 +30,7 @@ int main(){
         st[i].attedance='x';
     };
     for(int i=0;i<50;i++){
-        tc[i].id=-1;
+        strcpy(tc[i].id,"ok");
     };
     for(int i=0;i<10;i++){
         adm[i].id=-1;
@@ -44,7 +44,7 @@ int main(){
     scanf("%d",&x);
     if(x==0){ break; }
     char c; scanf("%c",&c);  //for removing extra \n
-    char password[100]; int sIndex;
+    char password[100],password2[100]; int sIndex;
     switch(x){
         case 1:
                 strcpy(password,"Student@");
@@ -60,25 +60,28 @@ int main(){
                 }
                 printf("Enter Password : ");
                 char checkP[100];
-                fgets(checkP,100,stdin);
+                fgets(checkP,100,stdin);     int w;
                 while(1){
                 if(strcmp(password,checkP)==0){
+                    if(w==0){
+                        break;
+                    }
                 while(1){
                    printf("Welcome to Student Portal. Choose from options below : \n");
-                   printf("1.See Profile Data \n2.See CGPA till last semester\n3.Pay Fees or Check Fees Status\n4.See Today's Attendance\n-To Exit Enter Zero-");
-                   int w; scanf("%d",&w);
+                   printf("1.See Profile Data \n2.See CGPA till last semester\n3.Pay Fees or Check Fees Status\n4.See Today's Attendance\n-To Exit Enter Zero-\n");
+                   scanf("%d",&w);
                    if(w==0){
                     break;
                    }
                    switch(w){
-                    case 1 : printf("Student Name : %s\n",st[sIndex].name);
+                    case 1 : printf("Student Name : %s",st[sIndex].name);
                              printf("Roll No. : %d\n",st[sIndex].rollNo);
                              printf("Current Semester : %d\n",st[sIndex].semester);
                              printf("Date of Birth(In DDMMYYYY) : %s\n",st[sIndex].dob);
                              printf("To Go Back Enter 0\n");
                              int gb1; scanf("%d",&gb1);
                              if(gb1==0){  break; }
-                    case 2 : printf("Calculated CGPA till %d semester is %f",st[sIndex].semester,st[sIndex].cgpa);
+                    case 2 : printf("Calculated CGPA till %d semester is %f\n",st[sIndex].semester,st[sIndex].cgpa);
                              printf("To Go Back Enter 0\n");
                              int gb2; scanf("%d",&gb2);
                              if(gb2==0){  break; }
@@ -113,54 +116,57 @@ int main(){
                 break;
         
         case 2 : strcpy(password,"Teacher@");
-                int checkI;
+                char checkI[50];
                 printf("Enter Your Registered ID Number : ");
-                scanf("%d",&checkI); char dump2; scanf("%c",&dump2);
-                for(int i=0;tc[i].id!=-1;i++){
-                    if(tc[i].id==checkI){
-                        strcat(password,tc[i].id);
-                        strcat(password,"\n");
+                fgets(checkI,50,stdin); 
+                for(int i=0;strcmp(tc[i].id,"ok")!=0;i++){
+                    if((strcmp(checkI,tc[i].id))==0){
+                        strcat(password,tc[i].id);                
+                        
                         sIndex=i;
                     }
                 }
                 printf("Enter Password : ");
                 char checkPT[100];
-                fgets(checkPT,100,stdin);
+                fgets(checkPT,100,stdin); int td;
                 while(1){
                 if(strcmp(password,checkPT)==0){
+                    if(td==0)   break;
                 while(1){
                     printf("Welcome to Teacher Portal. Choose from options below : \n");
                     printf("1.See Profile Data\n2.See Student List\n3.Mark Attendance\nEnter Zero To Exit\n");
                 int tcv; scanf("%d",&tcv);
+                    if(td==0)   break;
                     if (tcv==0)  break;
                     switch(tcv){
                         case 1: printf("Teacher Detail:\n");
-                                printf("Teacher Name : %s\n",tc[sIndex].name);
-                                printf("ID Number : %d\n",tc[sIndex].id);
+                                printf("Teacher Name : %s",tc[sIndex].name);
+                                printf("ID Number : %s",tc[sIndex].id);
                                 printf("Experience : %d\n",tc[sIndex].experience);
                                 printf("Salary : Rs.%d\n",tc[sIndex].salary);
                                 printf("To Go Back Enter 0\n");
-                                int td1; scanf("%d",&td1);
-                                if(td1==0){  break;}
+                                 scanf("%d",&td);
+                                if(td==0){  break;}
                                 break;
                         case 2: printf("---List of Students---\n");
                                 for(int i=0;st[i].rollNo!=-1;i++){
                                 printf("%d Name : %s\tRollNo. :%d\tCGPA :%f\tAttendance :%c\n",i+1,st[i].name,st[i].rollNo,st[i].cgpa,st[i].attedance);
                         }      
                                 printf("To Go Back Enter 0\n");
-                                int td2; scanf("%d",&td2);
-                                if(td2==0){  break; }
+                                 scanf("%d",&td);
+                                if(td==0){  break; }
                                 break;
                         case 3: for(int i=0;st[i].rollNo!=-1;i++){
                                 printf("%s : ",st[i].name);
                                 scanf("%c",st[i].attedance);
                         }       printf("Attendance Submitted Successfully\n");
                                 printf("To Go Back Enter 0\n");
-                                int td3; scanf("%d",&td3);
-                                if(td3==0){  break; }
+                                scanf("%d",&td);
+                                if(td==0){  break; }
                                 break;
                         
                     }
+                            
 
         
             }
@@ -170,23 +176,25 @@ int main(){
                     printf("Wrong Password. Try Again ");
                     break;
                 }
-            }
+                
+            }   break;
         case 3: printf("Enter Password : ");
                 char checkADM[100];
                 char true[100]="Admin@159\n";
-                fgets(checkADM,100,stdin);
+                fgets(checkADM,100,stdin);  int ad;
                 while(1){
+                    if(ad==0){
+                        break;
+                    }
                 if(strcmp(true,checkADM)==0){
-                    printf("Press 0 To Go Back and any other key to Move Forward\n");
-                    int exit1; scanf("%d",&exit1);
-                    if(exit1==0) break;
+                    if(ad==0) break;
                     else
                 while(1){
                    printf("Welcome to Admin Portal. Choose from options below : \n");
                    printf("1.See Profile Data\n2.Add Admin Details\n3.Add Student Details\n4.Add Teacher Details\nTo Exit Enter 0\n");
-                   int exiter; int ad;
+                   int exiter;
                    scanf("%d",&ad); char dumpp; scanf("%c",&dumpp);
-                   if(ad ==0) break; 
+                   if(ad==0) break; 
                    switch(ad){
                         case 1: for(int i=0;i<10;i++){
                                  printf("Admin Name : %s\n",adm[i].name);
@@ -219,7 +227,7 @@ int main(){
                                     printf("Enter Semester : ");
                                     scanf("%d",&st[i].semester);
                                     printf("Enter Date of Birth(in DDMMYYYY) : ");
-                                    scanf("%d",&st[i].dob);
+                                    scanf("%s",st[i].dob);
                                     printf("Enter Remaining Fees : Rs.");
                                     scanf("%d",&st[i].remFees);
                                      printf("To Stop Enter 0\nTo continue adding admins Enter 1\n");
@@ -234,7 +242,7 @@ int main(){
                                     printf("Teacher Name : ");
                                     fgets(tc[i].name,100,stdin);
                                     printf("Teacher ID : ");
-                                    scanf("%d",&tc[i].id);
+                                    fgets(tc[i].id,50,stdin);
                                     printf("Teacher Experience : ");
                                     scanf("%d",&tc[i].experience);
                                     printf("Teacher Salary : Rs.");
@@ -245,15 +253,19 @@ int main(){
                                     else if(sc==1) continue;
                                 }
                                     break;
-                            default : printf("Invalid Key Pressed \n");
+                    default : printf("Invalid Key Pressed.. Try Again\n");
                    }
 
                    
 
     }
 }//if
+else{ printf("Wrong Password..\n");
+    break;
+}
+        default : printf("Invalid Key Pressed.. Try Again\n");
 }//while 
-        default : printf("Invalid Menu Key Pressed\n");
+    
     }
 }
     return 0;

@@ -1,6 +1,9 @@
 #include<stdio.h>
 #include<string.h>
 int main(){
-    char c = 'k';
-    printf("hello%c",c);
+    char password[100]= -1;
+    int id = 5;
+    strcmp(password,id);
+    printf("%s",password);
+
 }

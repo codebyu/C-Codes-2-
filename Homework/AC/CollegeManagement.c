@@ -42,6 +42,7 @@ int main(){
     printf("1.Student \n2.Teacher \n3.Admin\nTo Exit Enter 0\n");
     int x;
     scanf("%d",&x);
+    if(x!=1||x!=2||x!=3)    continue;
     if(x==0){ break; }
     char c; scanf("%c",&c);  //for removing extra \n
     char password[100],password2[100]; int sIndex;
@@ -60,7 +61,7 @@ int main(){
                 }
                 printf("Enter Password : ");
                 char checkP[100];
-                fgets(checkP,100,stdin);     int w;
+                fgets(checkP,100,stdin);     int w=-1;
                 while(1){
                 if(strcmp(password,checkP)==0){
                     if(w==0){
@@ -81,7 +82,7 @@ int main(){
                              printf("To Go Back Enter 0\n");
                              int gb1; scanf("%d",&gb1);
                              if(gb1==0){  break; }
-                    case 2 : printf("Calculated CGPA till %d semester is %f\n",st[sIndex].semester,st[sIndex].cgpa);
+                    case 2 : printf("Calculated CGPA till now is %f\n",st[sIndex].semester,st[sIndex].cgpa);
                              printf("To Go Back Enter 0\n");
                              int gb2; scanf("%d",&gb2);
                              if(gb2==0){  break; }
@@ -93,6 +94,7 @@ int main(){
                                 printf("Enter The Amount Paid : Rs.");
                                 int minFees; scanf("%d",&minFees);
                                 printf("Fees Submitted Successfully.. \nRemaining Fees = Rs.%d",(st[sIndex].remFees)-minFees);
+                                st[sIndex].remFees -= minFees;
                                 printf("To Go Back Enter 0\n");
                                 int gb4; scanf("%d",&gb4);
                                 if(gb4==0){  break; }
@@ -103,8 +105,8 @@ int main(){
                                 printf("Today's Attendance Not Marked.\n");
                             }
                             break;
-                    default : printf("Wrong Key Pressed\n");   
-                }   
+                    default : printf("Wrong Key Pressed\n");  
+                }  
 
                    }
                 }
@@ -128,7 +130,7 @@ int main(){
                 }
                 printf("Enter Password : ");
                 char checkPT[100];
-                fgets(checkPT,100,stdin); int td;
+                fgets(checkPT,100,stdin); int td=-1;
                 while(1){
                 if(strcmp(password,checkPT)==0){
                     if(td==0)   break;
@@ -157,14 +159,15 @@ int main(){
                                 if(td==0){  break; }
                                 break;
                         case 3: for(int i=0;st[i].rollNo!=-1;i++){
-                                printf("%s : ",st[i].name);
-                                scanf("%c",st[i].attedance);
-                        }       printf("Attendance Submitted Successfully\n");
+                                printf("%s : ",st[i].name); 
+                                scanf(" %c",&st[i].attedance);
+                                }       
+                                printf("Attendance Submitted Successfully\n");
                                 printf("To Go Back Enter 0\n");
                                 scanf("%d",&td);
                                 if(td==0){  break; }
                                 break;
-                        
+                        default : printf("Invalid Key Pressed.. Try Again\n");
                     }
                             
 
@@ -181,14 +184,14 @@ int main(){
         case 3: printf("Enter Password : ");
                 char checkADM[100];
                 char true[100]="Admin@159\n";
-                fgets(checkADM,100,stdin);  int ad;
+                fgets(checkADM,100,stdin);  int ad=-1;
                 while(1){
                     if(ad==0){
                         break;
                     }
                 if(strcmp(true,checkADM)==0){
                     if(ad==0) break;
-                    else
+                    else{
                 while(1){
                    printf("Welcome to Admin Portal. Choose from options below : \n");
                    printf("1.See Profile Data\n2.Add Admin Details\n3.Add Student Details\n4.Add Teacher Details\nTo Exit Enter 0\n");
@@ -197,15 +200,18 @@ int main(){
                    if(ad==0) break; 
                    switch(ad){
                         case 1: for(int i=0;i<10;i++){
-                                 printf("Admin Name : %s\n",adm[i].name);
+                                 printf("Admin Name : %s",adm[i].name);
                                 printf("Admin ID Number : %d\n",adm[i].id);
-                                 printf("To Stop Enter 0\nTo continue adding admins Enter 1\n");
+                                 printf("To Go Back Enter 0 & To See More Admins Details Enter 1\n");
                             int sc; scanf("%d",&sc);
                             if(sc==0) break;
                             else if(sc==1) continue;
                         }
                                 break;
                         case 2: for(int i=0;i<10;i++){
+                                if(i>0){
+                                    char demo; scanf("%c",&demo);
+                                }
                             printf("Enter Admin Name : ");
                             fgets(adm[i].name,100,stdin);
                             printf("Enter ID Number : ");
@@ -217,6 +223,7 @@ int main(){
                         }       break;
                         case 3: printf("Enter Student Details : \n");
                                 for(int i=0;i<100;i++){
+                                    if(i>0) { char demo1; scanf("%c",&demo1); }
                                     printf("Details for student %d\n",i+1);
                                     printf("Enter Name : ");
                                     fgets(st[i].name,100,stdin);
@@ -230,7 +237,7 @@ int main(){
                                     scanf("%s",st[i].dob);
                                     printf("Enter Remaining Fees : Rs.");
                                     scanf("%d",&st[i].remFees);
-                                     printf("To Stop Enter 0\nTo continue adding admins Enter 1\n");
+                                    printf("Enter 0 to Go Back & 1 to Add Another Student\n");
                                     int sc; scanf("%d",&sc);
                                 if(sc==0) break;
                                 else if(sc==1) continue;
@@ -238,6 +245,7 @@ int main(){
                                     break;
                         case 4: printf("Enter Teacher Details : \n");
                                 for(int i=0;i<50;i++){
+                                    if(i>0) { char demo3; scanf("%c",&demo3); }
                                     printf("Details for Teacher %d\n",i+1);
                                     printf("Teacher Name : ");
                                     fgets(tc[i].name,100,stdin);
@@ -247,7 +255,7 @@ int main(){
                                     scanf("%d",&tc[i].experience);
                                     printf("Teacher Salary : Rs.");
                                     scanf("%d",&tc[i].salary);
-                                     printf("To Stop Enter 0\nTo continue adding admins Enter 1\n");
+                                     printf("To Go Back Enter 0\n");
                                     int sc; scanf("%d",&sc);
                                     if(sc==0) break;
                                     else if(sc==1) continue;
@@ -257,16 +265,19 @@ int main(){
                    }
 
                    
-
+                }
     }
 }//if
 else{ printf("Wrong Password..\n");
     break;
 }
-        default : printf("Invalid Key Pressed.. Try Again\n");
+        
 }//while 
+
     
-    }
+    default : printf("Invalid Key Pressed.. Try Again\n"); 
+}
+
 }
     return 0;
 }

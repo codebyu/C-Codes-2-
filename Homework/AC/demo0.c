@@ -1,9 +1,12 @@
 #include<stdio.h>
 #include<string.h>
 int main(){
-    char password[100]= -1;
-    int id = 5;
-    strcmp(password,id);
-    printf("%s",password);
+    int i; scanf("%d",&i);
+        switch(i){  {int x=1;}
+        case 0: int y=1;
+                printf("%d",sizeof(long));
+                printf("%d",9);
+                break;
+    }
 
 }

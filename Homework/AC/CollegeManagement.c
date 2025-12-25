@@ -8,6 +8,9 @@ struct student{
     char dob[10];
     int remFees;
     char attedance;
+    char payStatus[50];
+    long long upiRef;
+    int amountPaid;
 };
 struct teacher{
     char name[100];
@@ -35,14 +38,21 @@ int main(){
     for(int i=0;i<10;i++){
         adm[i].id=-1;
     };
-
+    for(int i=0;i<100;i++){
+        strcpy(st[i].payStatus,"Pending");
+    }
+    for(int i=0;i<100;i++){
+        st[i].upiRef=-1;
+    }
+    for(int i=0;i<100;i++){
+        st[i].remFees=-1;
+    }
     printf("---Welcome To The College Management System---\n");
     while(1){
     printf("Which Portal do you want to access : \n");
     printf("1.Student \n2.Teacher \n3.Admin\nTo Exit Enter 0\n");
     int x;
     scanf("%d",&x);
-    if(x!=1||x!=2||x!=3)    continue;
     if(x==0){ break; }
     char c; scanf("%c",&c);  //for removing extra \n
     char password[100],password2[100]; int sIndex;
@@ -73,8 +83,8 @@ int main(){
                    scanf("%d",&w);
                    if(w==0){
                     break;
-                   }
-                   switch(w){
+                   }    int demoLT=-1;
+                   switch(w){  
                     case 1 : printf("Student Name : %s",st[sIndex].name);
                              printf("Roll No. : %d\n",st[sIndex].rollNo);
                              printf("Current Semester : %d\n",st[sIndex].semester);
@@ -82,25 +92,44 @@ int main(){
                              printf("To Go Back Enter 0\n");
                              int gb1; scanf("%d",&gb1);
                              if(gb1==0){  break; }
-                    case 2 : printf("Calculated CGPA till now is %f\n",st[sIndex].semester,st[sIndex].cgpa);
+                    case 2 : printf("Calculated CGPA till now is %f\n",st[sIndex].cgpa);
                              printf("To Go Back Enter 0\n");
                              int gb2; scanf("%d",&gb2);
                              if(gb2==0){  break; }
-                    case 3 : printf("Remaining Fees : Rs.%d\n",st[sIndex].remFees);
-                             printf("Do you want to 1.Pay Fees 2.Go back");
+                    case 3 : while(1){ 
+                                if(demoLT==0){ break; }        
+                        printf("Remaining Fees : Rs.%d\n",st[sIndex].remFees);
+                             printf("Do you want to \n1.Pay Fees\n2.Check Status of Recent Transaction\n3.Go Back\n");
                              int gb3; scanf("%d",&gb3);
-                             if(gb3==2){  break; }
+                             if(gb3==3){  break; }
                              else if(gb3==1){
+                                printf("Pay The Amount to the UPI Id given below\nUPI Id - darshanjain@ptaxis\nAfter payment ");
+                                printf("Enter the Following Details : \n");
                                 printf("Enter The Amount Paid : Rs.");
-                                int minFees; scanf("%d",&minFees);
-                                printf("Fees Submitted Successfully.. \nRemaining Fees = Rs.%d",(st[sIndex].remFees)-minFees);
-                                st[sIndex].remFees -= minFees;
+                                scanf("%d",&st[sIndex].amountPaid);
+                                printf("UPI Ref No. : ");
+                                scanf("%lld",&st[sIndex].upiRef);
+                                printf("Transaction Details Sent Successfully.. \n");
+                                strcpy(st[sIndex].payStatus,"Pending");
+                                printf("Current Status : %s\n",st[sIndex].payStatus);
+                                printf("(Payment Is usually confirmed within 24 hours)\nCome again to check updated status\n");
+                               
                                 printf("To Go Back Enter 0\n");
                                 int gb4; scanf("%d",&gb4);
                                 if(gb4==0){  break; }
                              }
+                             else if(gb3==2) {
+                                printf("Last Transaction Details : \n");
+                                printf("Amount Paid : %d\n",st[sIndex].amountPaid);
+                                printf("UPI Ref No. : %lld\n",st[sIndex].upiRef);
+                                printf("Current Status : %s\n",st[sIndex].payStatus);
+                                printf("To Go Back Enter 0\n");
+                                scanf("%d",&demoLT);
+                             }
+                             }
+                             break;
                     case 4 :if(st[sIndex].attedance!='x'){
-                            printf("Today's Attendance : %c",st[sIndex].attedance); }
+                            printf("Today's Attendance : %c\n",st[sIndex].attedance); }
                             else{
                                 printf("Today's Attendance Not Marked.\n");
                             }
@@ -138,7 +167,7 @@ int main(){
                     printf("Welcome to Teacher Portal. Choose from options below : \n");
                     printf("1.See Profile Data\n2.See Student List\n3.Mark Attendance\nEnter Zero To Exit\n");
                 int tcv; scanf("%d",&tcv);
-                    if(td==0)   break;
+                    
                     if (tcv==0)  break;
                     switch(tcv){
                         case 1: printf("Teacher Detail:\n");
@@ -194,7 +223,7 @@ int main(){
                     else{
                 while(1){
                    printf("Welcome to Admin Portal. Choose from options below : \n");
-                   printf("1.See Profile Data\n2.Add Admin Details\n3.Add Student Details\n4.Add Teacher Details\nTo Exit Enter 0\n");
+                   printf("1.See Profile Data\n2.Add Admin Details\n3.Add Student Details\n4.Add Teacher Details\n5.Fees Management\nTo Exit Enter 0\n");
                    int exiter;
                    scanf("%d",&ad); char dumpp; scanf("%c",&dumpp);
                    if(ad==0) break; 
@@ -222,8 +251,10 @@ int main(){
                             else if(sc==1) continue;
                         }       break;
                         case 3: printf("Enter Student Details : \n");
+                                int sc;
                                 for(int i=0;i<100;i++){
-                                    if(i>0) { char demo1; scanf("%c",&demo1); }
+                                    if(st[i].rollNo==-1){
+                                    if(i>0&&sc==1) { char demo1; scanf("%c",&demo1); }
                                     printf("Details for student %d\n",i+1);
                                     printf("Enter Name : ");
                                     fgets(st[i].name,100,stdin);
@@ -238,10 +269,10 @@ int main(){
                                     printf("Enter Remaining Fees : Rs.");
                                     scanf("%d",&st[i].remFees);
                                     printf("Enter 0 to Go Back & 1 to Add Another Student\n");
-                                    int sc; scanf("%d",&sc);
+                                    scanf("%d",&sc);
                                 if(sc==0) break;
                                 else if(sc==1) continue;
-                                }
+                                }}
                                     break;
                         case 4: printf("Enter Teacher Details : \n");
                                 for(int i=0;i<50;i++){
@@ -255,27 +286,80 @@ int main(){
                                     scanf("%d",&tc[i].experience);
                                     printf("Teacher Salary : Rs.");
                                     scanf("%d",&tc[i].salary);
-                                     printf("To Go Back Enter 0\n");
+                                     printf("To Go Back Enter 0 & To Add another Teacher Enter 1\n");
                                     int sc; scanf("%d",&sc);
                                     if(sc==0) break;
                                     else if(sc==1) continue;
                                 }
                                     break;
-                    default : printf("Invalid Key Pressed.. Try Again\n");
+                    case 5 : 
+                                
+                                printf("Choose the option from below : \n");
+                                int appr;
+                             printf("1.Remaining Fees Students List\n2.Approve/Reject Fees Payment Request\nTo Go Back Enter Zero\n");
+                             int f;
+                             scanf("%d",&f); char dump5 ; scanf("%c",&dump5);
+                             switch(f){
+                                case 1:  printf("List of Students and their Remaining Fees : \n");
+                                        for(int i=0;st[i].remFees!=-1;i++){
+                                            printf("%s : ",st[i].name);
+                                            printf("%d\n",st[i].remFees);
+                                }     printf("To Go Back Enter 0 \n ");
+                                        int y1; scanf("%d",&y1);
+                                      break;
+                                case 2:  printf("Approve Or Reject the Fees Payment Request Submitted by the Students \n");
+                                        int c=1;
+                                        for(int i=0;i<100;i++){
+                                            if(st[i].upiRef!=-1){ 
+                                                printf("Transaction No. %d\n",c);
+                                                printf("Student Name : %s",st[i].name);
+                                                printf("Roll No. : %d\n",st[i].rollNo);
+                                                printf("Amount Paid : %d\n",st[i].amountPaid);
+                                                printf("UPI Ref No. : %lld\n",st[i].upiRef);
+                                                c++;
+                                                printf("To Approve Press 1 , To Reject Press 2 & To Go back press 0\n");
+                                                
+                                                scanf("%d",&appr);
+                                                if(appr==1){
+                                                    strcpy(st[i].payStatus,"Success");
+                                                    st[i].remFees-= st[i].amountPaid;
+                                                 
+                                                    printf("Fees Submitted Successfully.. \nRemaining Fees = Rs.%d\n",(st[sIndex].remFees));
+                                
+                                                }
+                                                else if(appr==2){
+                                                    strcpy(st[i].payStatus,"Rejected");
+                                                }
+                                                if(appr==1||appr==2){
+                                                    st[i].upiRef=-1;
+                                                }
+                                                else if(appr==0){
+                                                    break;
+                                                }
+                                                else{ printf("Wrong Key Pressed \n"); }
+                                            }
+                                            
+                                        }
+                                            break;
+                        default : if(f!=0) printf("Invalid Key Pressed.. Try Again\n");
+                             }
+                                 break;
+            default : if(ad!=0) printf("Invalid Key Pressed .. Try Again\n");
+                    
                    }
 
-                   
+                    
                 }
     }
 }//if
 else{ printf("Wrong Password..\n");
     break;
 }
-        
-}//while 
 
-    
-    default : printf("Invalid Key Pressed.. Try Again\n"); 
+
+}//while 
+break;
+ default :     if(ad!=0) printf("Invalid Key Pressed.. Try Again\n");
 }
 
 }

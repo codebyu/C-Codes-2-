@@ -29,32 +29,16 @@ switch(x){
         }
         fclose(fptr);
         break;
-    case 2 :
-            
+    case 2 : 
             fptr=fopen("StudentsData.txt","r");
             char line[100];
             printf("---Students Data---\n");
             fgets(line,100,fptr);
-
-            while(fgets(line,100,fptr)!=NULL) {
-            
-            
+            fgets(line,100,fptr);
+            printf("%s",line);
             char nameR[100]; int rollR; float cgpaR; char courseR[100];
-            sscanf(line,"%19[^|]|%d |%f |%6[^|]",nameR,&rollR,&cgpaR,courseR);
-           
-            int lenR = strlen(nameR);
-            while(nameR[lenR-1]==' '){
-                nameR[lenR-1]='\0';
-                lenR=strlen(nameR);
-            }
-            lenR=strlen(courseR);
-            while(courseR[lenR-1]==' '){
-                courseR[lenR-1]='\0';
-                lenR=strlen(courseR);
-            }
-             printf("%s--%d--%0.2f--%s--\n",nameR,rollR,cgpaR,courseR);
-        }
-        break;
+            sscanf(line,"%19[^|]|%d|%f|%6[^|]",nameR,&rollR,&cgpaR,courseR);
+            printf("%s--%d--%0.2f--%s--",nameR,rollR,cgpaR,courseR);
     }
 
        

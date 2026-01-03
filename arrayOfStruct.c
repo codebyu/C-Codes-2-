@@ -13,5 +13,5 @@ int main(){
     strcpy(ece[4].name,"Chinmay");
     printf("%d",cse[11].roll);
     printf("\n%s",ece[5].name);
-    
+    stuct student
 }

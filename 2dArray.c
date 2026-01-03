@@ -7,6 +7,7 @@ int main(){
         for(int j=0;j<3;j++){
             printf("%d\t",arr[i][j]);
         }
+        
         printf("\n");
     }
 }

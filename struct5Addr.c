@@ -53,8 +53,10 @@ int main(){
             int temp;
             int realizer = -1;
             scanf("%d",&temp);
-            for(int k=0;array[k].number==temp;k++){
-                realizer =k;
+            for(int k=0;array[k].number!=-1;k++){
+            if(array[k].number == temp){
+                realizer=k;
+            }
             }
             if(realizer==-1){
                 printf("No House Found\n");
